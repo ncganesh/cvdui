@@ -1,7 +1,9 @@
 <div id="graph2" class="graph-container"></div>
 <div id="graph" class="graph-container"></div>
 
+
 <div class="row" *ngIf="showEverything">
+
     <!-- <div class="col">
         <ng-container *ngIf="wordChart">
             <div [chart]="wordChart"></div>
@@ -38,3 +40,10 @@
 </div>
 
 <div class="graph-spacing" *ngIf="showEverything"></div>
+
+
+<div class="col" *ngIf="isLoaded">
+    <ng-container *ngIf="chart">
+        <div [chart]="anomolyactivitychart"></div>
+    </ng-container>
+</div>

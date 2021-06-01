@@ -30,6 +30,69 @@ export class HomeComponent implements OnInit {
   showEverything = true;
   filteredTweetData = [];
 
+
+  
+
+anomoly: Highcharts.Options = {
+
+  chart: {
+      type: 'networkgraph',
+      marginTop: 80
+  },
+  title: {
+      text: 'The Indo-European Language Tree'
+  },
+  subtitle: {
+      text: 'A Force-Directed Network Graph in Highcharts'
+  },
+  plotOptions: {
+      networkgraph: {
+          keys: ['from', 'to'],
+          layoutAlgorithm: {
+              enableSimulation: true,
+              integration: 'verlet',
+              linkLength: 100
+          }
+      }
+  },
+  series: [{
+      id: 'language-tree',
+      type: 'networkgraph',
+      dataLabels: {
+          enabled: true,
+          textPath: {
+              enabled: true
+          },
+          allowOverlap: true
+      },
+      data: [
+          ['Proto Indo-European', 'Balto-Slavic'],
+          ['Proto Indo-European', 'Germanic'],
+          ['Proto Indo-European', 'Celtic'],
+          ['Proto Indo-European', 'Italic'],
+          ['Proto Indo-European', 'Hellenic'],
+          ['Proto Indo-European', 'Anatolian'],
+          ['Proto Indo-European', 'Indo-Iranian'],
+          ['Proto Indo-European', 'Tocharian'],
+          ['Indo-Iranian', 'Dardic'],
+          ['Indo-Iranian', 'Indic'],
+          ['Indo-Iranian', 'Iranian'],
+          ['Iranian', 'Old Persian'],
+          ['Old Persian', 'Middle Persian'],
+          ['Indic', 'Sanskrit'],
+          ['Italic', 'Osco-Umbrian'],
+          ['Italic', 'Latino-Faliscan'],
+          ['Latino-Faliscan', 'Latin'],
+          ['Celtic', 'Brythonic'],
+          ['Celtic', 'Goidelic']
+      ]
+  }]
+}
+
+
+anomolyactivitychart = new Chart(this.anomoly);
+
+
   ngOnInit() {
     this.tweetDataService.loadedSubject.subscribe(loaded => {
       this.isLoaded = loaded;
